@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="icon" href="img/weather.png">
+
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+</head>
+<body>
+	<div class="main-content">
+		{{>header}}
+		<p>Donne-moi une localisation et je te donne la météo en direct ! </p>
+		<form>
+			<input placeholder="Localisation">
+			<button> Rechercher</button>
+		</form>
+		<p id="message-1"></p>
+		<p id="message-2"></p>
+	</div>
+	{{>footer}}
+	<script rel="script" src="js/app.js"></script>
+</body>
+</html>
