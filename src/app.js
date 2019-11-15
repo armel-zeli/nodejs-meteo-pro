@@ -20,6 +20,7 @@ hbs.registerPartials(partialsPath)
 //Set up directory to serve
 app.use(express.static(publicDirectoryPath))
 
+// Route definition
 app.get('', (req, res) => {
     res.render('index', {
         title: "Météo Pro",

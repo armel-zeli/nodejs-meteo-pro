@@ -3,6 +3,9 @@ const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
 
+/**
+ * Return the weather informations when the user submit the form
+ */
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
