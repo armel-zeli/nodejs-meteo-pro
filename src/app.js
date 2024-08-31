@@ -60,7 +60,9 @@ app.get('/meteo', (req, res) => {
             })
         }
 
+
         forecast(latitude, longitude, (error, data) => {
+
             if(error){
                 return res.send({
                     error

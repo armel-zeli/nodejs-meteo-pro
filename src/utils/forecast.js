@@ -3,7 +3,7 @@ const request = require('request')
 const forecast = (latitude, longitude, callback) => {
     const url = `https://api.darksky.net/forecast/2c4db1003965a2d1fad6bb2c89675839/${latitude},${longitude}?units=si&lang=fr`
 
-    request({url, json: true}, (error, {body}) => {
+    request({url, json: true}, (error, {body} = {}) => {
         if (error) {
             callback("Impossible de se connecter à l'api darksy !", undefined)
         } else if (body.error) {
