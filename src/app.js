@@ -43,7 +43,7 @@ app.get('/aide', (req, res) => {
         message: 'Bonjour, puis-je vous aider ?'
     })
 })
-app.get('/meteo', (req, res) => {
+app.get('/meteo', async (req, res) => {
     const address = req.query.address
 
     if (!address) {
@@ -51,32 +51,15 @@ app.get('/meteo', (req, res) => {
             error: 'Merci de fournir une adresse'
         })
     }
-
-    geocode(address, (error, {latitude, longitude, location} = {}) => {
-
-        if(error){
-            return res.send({
-                error
-            })
-        }
-
-
-        forecast(latitude, longitude, (error, data) => {
-
-            if(error){
-                return res.send({
-                    error
-                })
-            }
-
-            res.send({
-                address: address,
-                forecast: data,
-                location: location
-            })
-        })
-    })
-
+    
+    try {
+        const { latitude, longitude, location } = await geocode(address);
+        const result = await forecast(latitude, longitude);
+        return res.send({ address, location, forecast: result });
+    } catch (error) {
+        return res.send({error})
+    }
+    
 })
 
 app.get('/aide/*', (req, res) => {
